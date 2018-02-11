@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<div th:replace="fragments :: page-header"></div>
+
+<!-- TODO get the titles to refer to what the person searched for and make the skills show up in there, or put them on detail page -->
+
+
+<div th:unless="${bysubjects} and ${bysubjects.size()}">
+    <h2>No Subject Results</h2>
+</div>
+
+
+<div th:if="${bysubjects} and ${bysubjects.size()}">
+<h2>Activities by Subject</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Subject</th>
+
+            <th>Ages</th>
+            <th>When or Where</th>
+            <th>See details</th>
+        </tr>
+        <tr th:each="bysubject : ${bysubjects}">
+            <td th:text="${bysubject.eName}"></td>
+            <td th:text="${bysubject.eSubject}"></td>
+
+
+            <td th:text="${bysubject.eAges}"></td>
+            <td th:text="${bysubject.eWhere}"></td>
+            <td><a th:href="@{'/activity/detail/' +${bysubject.id}}">See details</a></td>
+        </tr>
+
+    </table>
+
+
+</div>
+
+<div th:unless="${ages} and ${ages.size()}">
+    <h2>No Age Results</h2>
+</div>
+
+
+<div th:if="${ages} and ${ages.size()}">
+<h2>Activities by Age</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Sub-Category</th>
+            <th>Ages</th>
+            <th>When or Where</th>
+            <th>See details</th>
+        </tr>
+        <tr th:each="age : ${ages}">
+            <td th:text="${age.eName}"></td>
+            <td th:text="${age.eSubject}"></td>
+
+
+            <td th:text="${age.eAges}"></td>
+            <td th:text="${age.eWhere}"></td>
+            <td><a th:href="@{'/activity/detail/' +${age.id}}">See details</a></td>
+        </tr>
+
+    </table>
+
+
+</div>
+
+<div th:unless="${wheres} and ${wheres.size()}">
+    <h2>No When/Where Results</h2>
+</div>
+
+
+<div th:if="${wheres} and ${wheres.size()}">
+<h2>Activities by When/Where</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Subject</th>
+            <th>Sub-Category</th>
+            <th>Ages</th>
+            <th>When or Where</th>
+            <th>See details</th>
+        </tr>
+        <tr th:each="where : ${wheres}">
+            <td th:text="${where.eName}"></td>
+            <td th:text="${where.eSubject}"></td>
+
+
+            <td th:text="${where.eAges}"></td>
+            <td th:text="${where.eWhere}"></td>
+            <td><a th:href="@{'/activity/detail/' +${where.id}}">See details</a></td>
+        </tr>
+
+    </table>
+
+
+</div>
+</body>
+</html>

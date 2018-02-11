@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style='float: left'>
+    <a href = "/family_list">Our List</a>
+    <a href = "/this_week_list">New This Week</a>
+</div>
+<br>
+<h1>Welcome, {{owner.username}}!</h1>
+<h1>Here are All the Activities!</h1>
+{% for activity in activities %}
+<h2> {{activity.name}}</h2>
+<div>Try this out when you are {{activity.where}}!
+This activity will help your child with {{activity.goal}}.
+Complete this activity and earn {{activity.points}} points!</div>
+{% if activity.link %}
+<p>Here is a link to a cool video or website!  <a href="{{activity.link}}">Click here</a></p>
+{% endif %}
+<p><a href = "/activity_detail">Click here for more information about this activity.</a></p>
+<hr>
+
+
+    {% endfor %}
+{% endblock %}

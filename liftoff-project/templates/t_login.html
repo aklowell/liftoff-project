@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Welcome to the teacher portal - please log in!</h2>
+<form method="post" action = "/teacher_login">
+  <p><label>Username <input type="text" name="username"/></label></p>
+  <p><label>Password <input type="password" name="password"/></label></p>
+  <p><label>Verify Password <input type="password" name="verify"/></label></p>
+  <p><input type="submit" value="Login"/></p>
+</form>
+
+<p>Don't have an account? Please see the site administrator.</p>
+
+{% endblock %}

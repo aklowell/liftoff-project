@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+<div th:replace="fragments :: page-header"></div>
+
+<h2>Search Form</h2>
+
+<div class="container body-content">
+
+<!-- TODO Put an "All" choice somewhere -->
+
+    <form th:action="@{/search/results}" th:object="${searchForm}">
+        <h2>Search by:</h2>
+
+       <ul  class="column" style="list-style:none;">
+
+
+           <li>    <input type="radio" th:field="*{subject}" th:value="Math" th:checked="${subject}" />
+           <label>Math</label>
+            </li>
+           <li>    <input type="radio"  th:field="*{subject}" th:value="Literacy" th:checked="${subject}"/>
+               <label>Literacy</label>
+           </li>
+           <li>    <input type="radio"  th:field="*{subject}" th:value="Social" th:checked="${subject}"/>
+               <label>Social</label>
+           </li>
+           <li>    <input type="radio"  th:field="*{subject}" th:value="GrossMotor" th:checked="${subject}"/>
+               <label>Gross Motor</label>
+           </li>
+           <li>    <input type="radio"  th:field="*{subject}" th:value="FineMotor" th:checked="${subject}"/>
+               <label>Fine Motor</label>
+           </li>
+           <li>    <input type="radio"  th:field="*{subject}" th:value="Science" th:checked="${subject}"/>
+               <label>Science</label>
+           </li>
+           <li>    <input type="radio"  th:field="*{subject}" th:value="Health" th:checked="${subject}"/>
+               <label>Health</label>
+           </li>
+           <li>    <input type="radio"  th:field="*{subject}" th:value="SelfCare" th:checked="${subject}"/>
+               <label>Self-Care</label>
+           </li>
+
+
+        </ul>
+        <hr />
+
+        <ul  class="column" style="list-style:none;">
+
+
+            <li>    <input type="radio"  th:field="*{ages}" th:value="Infant" th:checked="${ages}"/>
+                <label>Infant</label>
+            </li>
+            <li>    <input type="radio"  th:field="*{ages}" th:value="Toddler" th:checked="${ages}"/>
+                <label>Toddler</label>
+            </li>
+            <li>    <input type="radio"  th:field="*{ages}" th:value="Two" th:checked="${ages}"/>
+                <label>Two Year Old</label>
+            </li>
+            <li>    <input type="radio"  th:field="*{ages}" th:value="Pre-K" th:checked="${ages}"/>
+                <label>Pre-K</label>
+            </li>
+
+
+        </ul>
+        <hr />
+        <ul  class="column" style="list-style:none;">
+
+
+            <li>    <input type="radio"  th:field="*{where}" th:value="Mealtime" th:checked="${where}"/>
+                <label>Mealtime</label>
+            </li>
+            <li>    <input type="radio"  th:field="*{where}" th:value="Bedtime" th:checked="${where}"/>
+                <label>Bedtime</label>
+            </li>
+            <li>    <input type="radio"  th:field="*{where}" th:value="Bathtime" th:checked="${where}"/>
+                <label>Bathtime</label>
+            </li>
+            <li>    <input type="radio"  th:field="*{where}" th:value="GroceryStore" th:checked="${where}"/>
+                <label>Grocery Store</label>
+            </li>
+            <li>    <input type="radio"  th:field="*{where}" th:value="Laundromat" th:checked="${where}"/>
+                <label>Laundromat</label>
+            </li>
+            <li>    <input type="radio"  th:field="*{where}" th:value="Doctor" th:checked="${where}"/>
+                <label>Doctor's Office</label>
+            </li>
+            <li>    <input type="radio"  th:field="*{where}" th:value="CarBusMetro" th:checked="${where}"/>
+                <label>Car-Bus-Metro</label>
+            </li>
+            <li>    <input type="radio"  th:field="*{where}" th:value="HairSalon" th:checked="${where}"/>
+                <label>Hair Salon</label>
+            </li>
+            <li>    <input type="radio"  th:field="*{where}" th:value="Cooking" th:checked="${where}"/>
+                <label>Cooking</label>
+            </li>
+
+
+        </ul>
+
+
+    <!--    <div class="form-group">
+            <label th:for="keyword">Keyword</label>
+            <input class="form-control" th:field="*{keyword}" />
+        </div>  -->
+
+        <input type="submit" value="Search" />
+    </form>
+
+    <hr />
+
+    <div>
+        <div th:unless="${activities} and ${activities.size()}">
+            <h2>No Results</h2>
+        </div>
+
+
+        <div th:if="${activities} and ${activities.size()}">
+
+            <!--     <h3 th:text="${activity.eSubject} + ${activities.size() + ' Result(s)'}"></h3> -->
+
+
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Subject</th>
+                    <th>Sub-Category</th>
+                    <th>Ages</th>
+                    <th>When or Where</th>
+                    <th>See details</th>
+                </tr>
+                <tr th:each="activity : ${activities}">
+                    <td th:text="${activity.eName}"></td>
+                    <td th:text="${activity.eSubject}"></td>
+                    <td th:text="${activity.eSkill}"></td>
+                    <td th:text="${activity.eAges}"></td>
+                    <td th:text="${activity.eWhere}"></td>
+                    <td><a th:href="@{'/activity/detail/' +${activity.id}}">See details</a></td>
+                </tr>
+
+            </table>
+    </div>
+
+
+</div>
+
+</div>
+
+</body>
+</html>

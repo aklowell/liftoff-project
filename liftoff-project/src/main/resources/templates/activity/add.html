@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<div th:replace="fragments :: page-header"></div>
+<h1 th:text="${title}">Default Title</h1>
+
+<!-- TODO Make 2 columns for entries, English and Spanish ??TABLE STYLE  OR JUST FORM-->
+
+
+<form method ="post" th:object = "${activity}" style="max-width:600px;">
+     <div class="form-group" >
+
+         <div class="row">
+         <div class= "column">
+
+        <label th:for="eName">Name (English):</label>
+        <input th:type="text" th:field="*{eName}" />
+        <span th:errors="*{eName}" class="error"></span>
+
+
+        <label th:for="eDescription">Description (English):</label>
+        <input  th:type="text" th:field="*{eDescription}" />
+        <span th:errors="*{eDescription}" class="error"></span>
+
+
+   <!-- TODO can I put this in a table cell -->
+        <label th:for="eSubject">Category (choose one)</label>
+        <select name="eSubject">
+            <option value="math">Math</option>
+            <option value="literacy">Literacy</option>
+            <option value="social">Social Skills</option>
+            <option value="gross_motor">Gross Motor Skills</option>
+            <option value="fine_motor">Fine Motor Skills</option>
+            <option value="science">Science</option>
+            <option value="health">Health</option>
+            <option value="selfcare">Self Care</option>
+            <option value="selfcare">All</option>
+        </select>
+
+             <label th:for="eAges">Best for age group (choose one):</label>
+             <select name="eAges">
+                 <option value="infant">Infant</option>
+                 <option value="toddler">Toddler</option>
+                 <option value="two">Two Year-Olds</option>
+                 <option value="preK">Pre-K</option>
+                 <option value="all">All</option>
+             </select>
+
+             <label th:for="eWhere">When/where (choose one):</label>
+             <select name="eWhere">
+                 <option value="mealtime">Mealtime</option>
+                 <option value="bedtime">Bedtime</option>
+                 <option value="bathtime">Bathtime</option>
+                 <option value="cooking">Cooking</option>
+                 <option value="grocery">Grocery Store</option>
+                 <option value="laundromat">Laundromat</option>
+                 <option value="doctor">Doctor's Office</option>
+                 <option value="hair_salon">Hair Salon/Barber</option>
+                 <option value="transport">Car-Bus-Metro</option>
+
+                 <option value="all">All</option>
+             </select>
+
+             <label th:for="eMaterials">Materials needed (English):</label>
+             <input th:type="text" th:field="*{eMaterials}" />
+             <span th:errors="*{eMaterials}" class="error"></span>
+
+             <label th:for="teacher">Who entered:</label>
+             <select name="teacher">
+                 <option value="name1">name1</option>
+                 <option value="name2">name2</option>
+             </select>
+
+             <h3>Links to info and photo/video (URLs only)</h3>
+             <label th:for="linkInfo">Website</label>
+             <input th:field="*{linkInfo}" />
+             <span th:errors="*{linkInfo}" class="error"></span>
+
+             <label th:for="linkPhoto">Photo</label>
+             <input th:field="*{linkPhoto}" />
+             <span th:errors="*{linkPhoto}" class="error"></span>
+
+             <label th:for="linkVideo">Video</label>
+             <input th:field="*{linkVideo}" />
+             <span th:errors="*{linkVideo}" class="error"></span>
+
+             <p> date here - automatic? </p>
+
+
+         </div>
+
+        <div class="row">
+            <div class= "column">
+
+                <label th:for="sName">Name (Spanish):</label>
+                <input th:field="*{sName}" />
+                <span th:errors="*{sName}" class="error"></span>
+
+
+                <label th:for="sDescription">Description (Spanish):</label>
+                <input  th:type="text" th:field="*{sDescription}" />
+                <span th:errors="*{sDescription}" class="error"></span>
+
+                <label th:for="sMaterials">Materials needed (Spanish):</label>
+                <input th:type="text" th:field="*{sMaterials}" />
+                <span th:errors="*{sMaterials}" class="error"></span>
+
+
+
+            </div>
+        </div>
+
+             <input type = "submit" value="Add Activity" />
+
+         </div>
+     </div>
+</form>
+
+
+
+</body>
+</html>

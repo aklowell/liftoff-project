@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Welcome to the family portal - please log in!</h2>
+<form method="post" action = "/parent_login">
+  <p><label>Username <input type="text" name="username"/></label></p>
+  <p><label>Password <input type="password" name="password"/></label></p>
+  <p><label>Verify Password <input type="password" name="verify"/></label></p>
+  <p><label>E-mail Address (optional)<input type="text" name="email"/></label></p>
+  <p><label>Mobile Phone Number (optional)<input type="text" name="mobile"/></label></p>
+  <p><input type="submit" value="Login"/></p>
+</form>
+
+<p>Don't have an account?   <a href='/signup'>Create one!</a></p>
+
+{% endblock %}

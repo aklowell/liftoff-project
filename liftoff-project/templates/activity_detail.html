@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for activity in activities %}
+
+<h2>{{activity.name}}</h2>
+<!-- temp setup to see if this will work-->
+<form method = "post" action = "/family_list">
+    
+       
+        <input type = "hidden" name = "activity-id"  />
+    
+    <input type = "submit" value = "Add Activity" />
+</form>
+{% endfor %}
+
+<p>Use this page to show one activity with detail</p>
+{% endblock %}

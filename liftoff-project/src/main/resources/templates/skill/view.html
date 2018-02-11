@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<div th:replace="fragments :: page-header"></div>
+<h1 th:text="${activity.eName}">Default Title</h1>
+
+
+<ul>
+    <li th:each=" : ${activity.skills}" th:text="${skill.engName}"></li>
+</ul>
+
+<!--<p th:unless="${cheeses} and ${cheeses.size()}">There are no cheeses in this menu.</p>  -->
+
+<p><a th:href="'/skill/add-to-activity/' +${activity.id}">Add Skill to Activity</a></p>
+
+</body>
+</html>

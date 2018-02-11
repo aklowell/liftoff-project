@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container">
+<div th:replace="fragments :: page-header"></div>
+    <h1 th:text="${title}">Default Title</h1>
+
+    <p th:unless="${activities} and ${activities.size()}">No activities added yet! </p>
+
+<!-- THIS FORM IS FOR TEACHERS TO REVIEW, EDIT AND REMOVE ACTIVITIES -->
+
+    <table class="table">
+    <h2>English List</h2>
+        <tr>
+            <th>Activity</th>
+            <th>Description</th>
+            <th>Subject</th>
+            <th>Age Range</th>
+            <th>Entered by</th>
+            <th>Date Created</th>
+        </tr>
+    <tr th:each="activity : ${activities}">
+        <td th:text="${activity.eName}">Cheese</td>
+        <td th:text="${activity.eDescription}">Description</td>
+        <td th:text="${activity.eSubject}">Subject</td>
+        <td th:text="${activity.eAges}">Subject</td>
+        <td th:text="${activity.teacher}">Subject</td>
+        <td th:text="${activity.dateCreated}">Subject</td>
+
+
+        <td><a th:href="@{'/activity/edit/' + ${activity.id}}">Edit</a></td>
+    </tr>
+    </table>
+
+    <p><a href = "/activity/add">Add | </a><a href = "/activity/remove">Remove</a></p>
+
+</body>
+</html>

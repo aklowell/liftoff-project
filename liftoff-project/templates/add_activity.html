@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Add a New Activity</h1>
+    <form method = "post" >
+        <label>
+            Activity name:
+            <input type="text" name = 'name' value="{{activity_name}}"/>
+        </label>
+        <p class="error">{{ name_error }}</p>
+            <br>       
+        <label>
+            Learning goal:
+            <select name = "goal">
+                <option value="blank" selected> </option>
+                <option value = "counting">Counting</option>
+                <option value = "learning letters">Learning letters</option>
+                <option value = "pattern recognition">Pattern Recognition</option>
+                <option value = "learning colors">Learning Colors</option>
+            </select>
+        </label>
+        <br>
+        <label>
+            Ideal for minimum age:
+            <input type="text" name="forage" />
+        </label>
+        <label>
+            Location for activity:
+            <select name = "where">
+                <option value="blank" selected> </option>
+                <option value = "in the house">In the house</option>
+                <option value = "outside">Outside</option>
+                <option value = "at the laundromat">Laundromat</option>
+                <option value = "at the grocery store">Grocery store</option>
+                <option value = "at the doctor">Doctor's office</option>
+            </select>
+        </label>
+
+        <label>
+            Related to lesson plan topic:
+            <select name = "lessonplan">
+                <option value="blank" selected> </option>
+                <option value = "math">Math</option>
+                <option value = "literacy">Literacy</option>
+                <option value = "social skills">Social Skills</option>
+                <option value = "gross motor skills">Gross Motor Skills</option>                
+            </select>
+        </label>
+        <br>
+        <label>
+            Point value:
+            <select name = "points">
+                <option value="blank" selected> </option>
+                <option value = "2">1</option>
+                <option value = "3">3</option>
+                <option value = "5">5</option>
+                <option value = "10">10</option>
+            </select>
+        <br>
+        </label>
+        <label>
+            Link to audio or video demo:
+            <input type = "url" name = "link"/>    
+        </label>       
+        <br>     
+        <label>
+            Today's date:
+            <input type="dateadded" name="date" />
+        </label>
+        <br> 
+        <input type = "submit" value = "Add Activity" />
+
+     </form>
+{% endblock %}

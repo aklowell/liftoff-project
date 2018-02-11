@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>List of {{ goal }} activities.</h2>
+
+{% for goal in goals %}
+{{activity.name}}
+
+{% endfor %}
+{% endblock %}

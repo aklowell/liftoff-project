@@ -1,0 +1,249 @@
+body {
+    font-family: 'Roboto';font-size: 18px;
+}
+
+
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(170, 186, 10);
+    border-right: 1px solid rgb(19, 18, 18);
+}
+
+ul.topnav li {
+    float: left;
+    border-right: 1px solid black;
+
+}
+
+ul.topnav li:last-child {
+    border-right: none;
+}
+
+
+ul.topnav li a {
+    display: block;
+    color: dark gray;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 16px;
+
+}
+
+ul.topnav li a:hover:not(.active) {background-color: rgb(137,171,227);}
+
+ul.topnav li a.active {background-color: rgb(137,171,227);}
+
+ul.topnav li.right {float: right;}
+
+@media screen and (max-width: 600px){
+    ul.topnav li.right,
+    ul.topnav li {float: none;}
+}
+
+/* BUTTON DETAILS */
+button {
+    background-color: rgb(170,186,10)
+    border:none;
+    border-radius: 8px;
+    color: dark gray;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    }
+
+.btn-group button {
+    background-color: rgb(220, 223, 229)); /* gray background */
+    border: none;
+    color: dark gray; /* dark gray text */
+    padding: 10px 24px; /* Some padding */
+    margin: 15px;
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+
+.btn-group a {
+    color: black;
+    text-decoration: none;
+    }
+
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+    background-color: rgb(66, 134, 244);
+}
+/* END  BUTTON DETAILS */
+
+select {
+    width: 50%;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+/* FORM LAYOUT */
+
+* {
+    box-sizing: border-box;
+}
+
+input[type=text], select, textarea{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+input[type=submit] {
+    background-color: rgb(170,186,10);
+    color: dark gray;
+    padding: 12px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: left;
+    font-size: 18px;
+}
+
+input[type=submit]:hover {
+    background-color: rgb(137,171,227);
+}
+
+.container {
+    border-radius: 5px;
+  /*  background-color: #f2f2f2;  */
+    padding: 20px;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+/* END FORM LAYOUT */
+
+/* TABLE LAYOUT */
+table {
+    /*font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; */
+
+    margin: auto;
+    border-collapse: collapse;
+    overflow-x: scroll;
+    display: block;
+    width: fit-content;
+    max-width: 100%;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    max-width: 350px;`
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: gray;
+    color: white;
+}
+/* END TABLE LAYOUT */
+
+.customHr {
+    width: 95%
+    font-size: 1px;
+    color: rgb(0, 0, 0);
+    line-height: 1px;
+
+    background-color: grey;
+    margin-top: -6px;
+    margin-bottom: 10px;
+}
+
+.checkboxes {
+    columns: 4 8em;
+}
+
+/* ul in column layout*/
+ul.column {
+  flex-direction: column;
+  flex-wrap: wrap;
+  display: flex;
+  height: 200px;
+}
+ul.column li {
+  flex: 1 0 25%;
+}
+
+.column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    height: 300px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+

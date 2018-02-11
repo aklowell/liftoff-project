@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div style='float: left'>
+    <a href = "/family_list">Our List</a>
+    <a href = "/family_page">All Activities</a>
+</div>
+<br>
+<h1>Welcome, {{owner.username}}!</h1>
+<h1>New Activities as of this week!</h1>
+
+{% for activity in activities %}
+<h2> {{activity.name}}</h2>
+<div>Try this out when you are {{activity.where}}!
+This activity will help your child with {{activity.goal}}.
+Complete this activity and earn {{activity.points}} points!</div>
+
+<hr>
+
+
+    {% endfor %}
+{% endblock %}

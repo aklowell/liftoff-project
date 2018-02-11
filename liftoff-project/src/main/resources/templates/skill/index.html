@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<div th:replace="fragments :: page-header"></div>
+<h1 th:text="${title}">Default Title</h1>
+
+<p th:unless="${skills} and ${skills.size()}">No skills added yet!</p>
+
+<ul th:each="skill : ${skills}">
+    <li th:text="${skill.engName}">english name</li>
+    <li th:text="${skill.espName}">spanish name</li>
+</ul>
+<a href="/skill/add">Add a Skill</a>
+
+</body>
+</html>

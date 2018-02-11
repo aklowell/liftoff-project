@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body>
+<div th:replace="fragments :: page-header"></div>
+<div class="container body-content">
+    <h1 th:text="${title}">Default Title</h1>
+
+
+    <form method = "post" th:object="${form}" action = "/skill/add-to-activity" style="max-width:600px;">
+        <div class="form-group">
+            <label th:for="skillId">Skill:</label>
+
+            <select name = "skillId">
+                <option th:each="skill : *{skills}" th:text="${skill.engName}"
+                        th:value="${skill.id}">
+                </option>
+            </select>
+
+
+
+            <span th:errors="*{skillId}" class="error"></span>
+        </div>
+        <input type="hidden" name="activityId" th:value="*{activity.id}" />
+        <input type="submit" value="Add Skill to this Activity"/>
+
+    </form>
+</div>
+</body>
+</html>

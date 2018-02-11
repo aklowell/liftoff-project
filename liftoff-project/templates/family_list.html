@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Our Family List of Activities</h1>
+
+    {% if activities|length == 0 %} 
+    <!-- this is for checking if the task list has any tasks -->
+    <p>No activities yet! Add a few and start having fun!</p>
+    {% else %}
+        <ul>
+            {% for activity in activities %}  <!-- this is jinja language for a for loop -->
+            <li>{{activity.name}}
+                <form method = "POST" action = "/complete-activity" >
+                    <input type = "hidden" name ="activity-id" value = '{{activity.id}}' />
+                    <input type = "submit" value = "We did it!" />
+                </form>
+                </li>
+            {% endfor %}            <!-- you always have to close loops -->
+
+        </ul>
+    {% endif %}
+    <!-- this concludes the conditional for jinja, have to tell it -->
+
+        <hr />
+
+        <h2>Completed Activities</h2>
+        <ul>
+            {% for activity in completed_activities %}
+            <li>{{activity.name}}</li>
+            <p>{{activity.points}}</p>
+
+            {% endfor %}
+<!-- wait on this one
+            <p>Points earned as of today: {{total_points}}</p> -->
+
+        </ul>
+    {% endblock %}
