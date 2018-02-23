@@ -154,6 +154,10 @@ input[type=submit]:hover {
     margin-top: 6px;
 }
 
+.listplain {
+    text-decoration: none;
+    }
+
 /* Clear floats after the columns */
 .row:after {
     content: "";
@@ -227,6 +231,7 @@ ul.column li {
   flex: 1 0 25%;
 }
 
+/*
 .column {
     float: left;
     width: 50%;
@@ -244,6 +249,7 @@ ul.column li {
     .column {
         width: 100%;
     }
+    */
 }
 
 

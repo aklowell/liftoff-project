@@ -4,6 +4,7 @@ package com.example.southside.controllers;
 import com.example.southside.models.User;
 import com.example.southside.models.data.UserDao;
 
+import com.example.southside.models.forms.LoginForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,10 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping(value="user")
 public class UserController {
 
     @Autowired
@@ -46,4 +48,24 @@ public class UserController {
             return "user/add";
         }
     }
+
+    //TODO set this up to check for user in database and give access to correct locations
+
+    @RequestMapping(value="login", method=RequestMethod.GET)
+    public String login (Model model, LoginForm loginForm) {
+        model.addAttribute(loginForm);
+        return "user/login";
+
+    }
+
+    @RequestMapping(value="login", method=RequestMethod.POST)
+    public String login(Model model, LoginForm loginForm, String language) {
+        model.addAttribute(loginForm);
+        if (language.equalsIgnoreCase("en")) {
+            return "user/test";
+        }
+
+        return "user/login";
+    }
+
 }

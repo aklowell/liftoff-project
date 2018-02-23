@@ -33,6 +33,8 @@ public class SearchController {
         model.addAttribute("title", "Search Activities");
 
         model.addAttribute(new SearchForm());
+
+
         return "search/search";
     }
 
@@ -44,6 +46,9 @@ public class SearchController {
             model.addAttribute("bysubjects", activityDao.findByESubject(searchForm.getSubject()));
             model.addAttribute("ages", activityDao.findByEAges(searchForm.getAges()));
             model.addAttribute("wheres", activityDao.findByEWhere(searchForm.getWhere()));
+
+            //TODO say, if the original login was for es, return search/results_es
+
 
             return "search/results";
     }

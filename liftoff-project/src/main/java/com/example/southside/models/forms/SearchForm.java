@@ -13,7 +13,7 @@ public class SearchForm {
 
     public void setActivity(Activity activity) {this.activity = activity;}
 
-    @NotNull
+
     private int activityId;
 
     public int getActivityId() { return activityId; }

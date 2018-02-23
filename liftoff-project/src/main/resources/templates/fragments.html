@@ -19,11 +19,24 @@
     <ul class="topnav">
         <!-- TODO add hrefs to the list below. -->
         <li><a th:href = "@{/}">Home</a></li>
-        <li><a th:href = "@{/}">Pick Activities</a></li>
+        <li><a th:href = "@{/search}">Pick Activities</a></li>
         <li><a th:href="@{/}">My List</a></li>
         <li><a th:href="@{/}">Send a Note</a></li>
         <li><a th:href="@{/}">Log Out</a></li>
         <li><a th:href="@{/}">Back</a></li>
+
+    </ul>
+</div>
+
+<div th:fragment="page-header_es">
+    <ul class="topnav">
+        <!-- TODO add hrefs to the list below. -->
+        <li><a th:href = "@{/}">Inicio</a></li>
+        <li><a th:href = "@{/search_es}">Buscar</a></li>
+        <li><a th:href="@{/}">Mi lista</a></li>
+        <li><a th:href="@{/}">Enviar el maestro/a</a></li>
+        <li><a th:href="@{/}">Salir</a></li>
+        <li><a th:href="@{/}">De vuelta</a></li>
 
     </ul>
 </div>

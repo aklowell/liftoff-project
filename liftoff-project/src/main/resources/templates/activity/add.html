@@ -20,13 +20,14 @@
 
 
         <label th:for="eDescription">Description (English):</label>
-        <input  th:type="text" th:field="*{eDescription}" />
+        <textarea  rows="5" th:field="*{eDescription}" />
         <span th:errors="*{eDescription}" class="error"></span>
 
 
-   <!-- TODO can I put this in a table cell -->
+
         <label th:for="eSubject">Category (choose one)</label>
         <select name="eSubject">
+            <option disabled="disabled" selected="selected" value="">Choose one:</option>
             <option value="math">Math</option>
             <option value="literacy">Literacy</option>
             <option value="social">Social Skills</option>
@@ -40,6 +41,7 @@
 
              <label th:for="eAges">Best for age group (choose one):</label>
              <select name="eAges">
+                 <option disabled="disabled" selected="selected" value="">Choose one:</option>
                  <option value="infant">Infant</option>
                  <option value="toddler">Toddler</option>
                  <option value="two">Two Year-Olds</option>
@@ -49,6 +51,7 @@
 
              <label th:for="eWhere">When/where (choose one):</label>
              <select name="eWhere">
+                 <option disabled="disabled" selected="selected" value="">Choose one:</option>
                  <option value="mealtime">Mealtime</option>
                  <option value="bedtime">Bedtime</option>
                  <option value="bathtime">Bathtime</option>
@@ -63,7 +66,7 @@
              </select>
 
              <label th:for="eMaterials">Materials needed (English):</label>
-             <input th:type="text" th:field="*{eMaterials}" />
+             <textarea rows="4" th:field="*{eMaterials}" />
              <span th:errors="*{eMaterials}" class="error"></span>
 
              <label th:for="teacher">Who entered:</label>
@@ -74,15 +77,15 @@
 
              <h3>Links to info and photo/video (URLs only)</h3>
              <label th:for="linkInfo">Website</label>
-             <input th:field="*{linkInfo}" />
+             <input th:type="text" th:field="*{linkInfo}" />
              <span th:errors="*{linkInfo}" class="error"></span>
 
              <label th:for="linkPhoto">Photo</label>
-             <input th:field="*{linkPhoto}" />
+             <input th:type="text" th:field="*{linkPhoto}" />
              <span th:errors="*{linkPhoto}" class="error"></span>
 
              <label th:for="linkVideo">Video</label>
-             <input th:field="*{linkVideo}" />
+             <input th:type="text" th:field="*{linkVideo}" />
              <span th:errors="*{linkVideo}" class="error"></span>
 
              <p> date here - automatic? </p>
@@ -94,16 +97,16 @@
             <div class= "column">
 
                 <label th:for="sName">Name (Spanish):</label>
-                <input th:field="*{sName}" />
+                <input th:type="text" th:field="*{sName}" />
                 <span th:errors="*{sName}" class="error"></span>
 
 
                 <label th:for="sDescription">Description (Spanish):</label>
-                <input  th:type="text" th:field="*{sDescription}" />
+                <textarea rows="5"   th:field="*{sDescription}" />
                 <span th:errors="*{sDescription}" class="error"></span>
 
                 <label th:for="sMaterials">Materials needed (Spanish):</label>
-                <input th:type="text" th:field="*{sMaterials}" />
+                <textarea rows="4"   th:field="*{sMaterials}" />
                 <span th:errors="*{sMaterials}" class="error"></span>
 
 
