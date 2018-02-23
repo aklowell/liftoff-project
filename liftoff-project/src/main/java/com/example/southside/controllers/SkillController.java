@@ -3,6 +3,7 @@ package com.example.southside.controllers;
 
 import com.example.southside.models.Activity;
 import com.example.southside.models.Skill;
+import com.example.southside.models.User;
 import com.example.southside.models.data.ActivityDao;
 import com.example.southside.models.data.SkillDao;
 import com.example.southside.models.forms.AddSkillForm;
@@ -10,15 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value="skill")
+@SessionAttributes("user")
 
 public class SkillController {
 
@@ -42,10 +41,14 @@ public class SkillController {
         return "skill/add";
     }
 
+
+
+
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processSkillAddForm(Model model, @ModelAttribute @Valid Skill skill, Errors errors) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add a Skill");
+
             return "skill/add";
         }
         skillDao.save(skill);

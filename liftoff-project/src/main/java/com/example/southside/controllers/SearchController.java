@@ -2,8 +2,10 @@ package com.example.southside.controllers;
 
 
 import com.example.southside.models.Activity;
+import com.example.southside.models.User;
 import com.example.southside.models.data.ActivityDao;
 import com.example.southside.models.data.SkillDao;
+
 import com.example.southside.models.forms.SearchForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,11 +13,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@SessionAttributes("user")
 @RequestMapping("search")
 public class SearchController {
 
@@ -29,17 +33,22 @@ public class SearchController {
 
 
     @RequestMapping(value = "")
-    public String index(Model model) {
+
+    public String index(@ModelAttribute("user") User user, Model model) {
         model.addAttribute("title", "Search Activities");
 
         model.addAttribute(new SearchForm());
+        if (user.getLanguage().equalsIgnoreCase("es")) {
 
-
-        return "search/search";
+            return "search/search_es";
+        } else {
+            return "search/search";
+        }
     }
 
+
     @RequestMapping(value = "results")
-    public String search(Model model, @ModelAttribute SearchForm searchForm) {
+    public String search(@ModelAttribute("user") User user, Model model, @ModelAttribute SearchForm searchForm) {
         // ArrayList<Activity> activities;
 //TODO Separate the "All" Case to a separate page or a menu tab
 
@@ -47,11 +56,14 @@ public class SearchController {
             model.addAttribute("ages", activityDao.findByEAges(searchForm.getAges()));
             model.addAttribute("wheres", activityDao.findByEWhere(searchForm.getWhere()));
 
-            //TODO say, if the original login was for es, return search/results_es
 
+            if (user.getLanguage().equalsIgnoreCase("es")) {
 
+            return "search/results_es";
+    }  else {
             return "search/results";
-    }
+            }
+            }
 //TODO CLEAR THE PREVIOUS SEARCH BEFORE THEY DO A NEW ONE
 }
   //      return "search/index";

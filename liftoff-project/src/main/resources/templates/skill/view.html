@@ -6,6 +6,9 @@
 <div th:replace="fragments :: page-header"></div>
 <h1 th:text="${activity.eName}">Default Title</h1>
 
+<h2>Welcome <span th:text= "${user.username}"  th:value="${user.username}">User Name</span>!</h2>
+
+
 
 <ul>
     <li th:each=" : ${activity.skills}" th:text="${skill.engName}"></li>

@@ -39,6 +39,17 @@
     </div>
 
 
+    <div class="form-group">
+       <span>
+          <input type="radio" th:field="*{language}" th:value="EN" th:checked="${language}" />
+            <label>English</label>
+        </span>
+        <span>    <input type="radio"  th:field="*{language}" th:value="ES" th:checked="${language}"/>
+            <label>Espanol</label>
+        </span>
+
+    </div>
+
     <input type = "submit" value="Enter User" />
 
 </form>

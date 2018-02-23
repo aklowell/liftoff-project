@@ -3,6 +3,7 @@ package com.example.southside.controllers;
 
 import com.example.southside.models.Activity;
 import com.example.southside.models.Skill;
+import com.example.southside.models.User;
 import com.example.southside.models.data.ActivityDao;
 import com.example.southside.models.data.SkillDao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("activity")
+@SessionAttributes("user")
 public class ActivityController {
 
     @Autowired
@@ -25,14 +27,14 @@ public class ActivityController {
 
     //Request path: /index - for teachers & admins only
     //from here they add, edit and delete
-    @RequestMapping(value= "")
+    @RequestMapping(value = "")
     public String index(Model model) {
         model.addAttribute("activities", activityDao.findAll());
         model.addAttribute("title", "Activity List");
         return "activity/index";
     }
 
-    @RequestMapping(value="add", method= RequestMethod.GET)
+    @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddActivityForm(Model model) {
         model.addAttribute("title", "Add Activity");
         model.addAttribute(new Activity());
@@ -40,7 +42,7 @@ public class ActivityController {
         return "activity/add";
     }
 
-    @RequestMapping(value="add", method=RequestMethod.POST)
+    @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddActivityForm(@ModelAttribute @Valid Activity newActivity, Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Activity");
@@ -55,12 +57,16 @@ public class ActivityController {
     }
 
     @RequestMapping(value = "detail/{id}", method = RequestMethod.GET)
-    public String displayDetailsForm(@PathVariable int id, Model model) {
+    public String displayDetailsForm(@ModelAttribute("user") User user, @PathVariable int id, Model model) {
         Activity displayActivity = activityDao.findOne(id);
         model.addAttribute("name", displayActivity.geteName());
         model.addAttribute("activityId", activityDao.findOne(id));
         model.addAttribute(displayActivity);
 
-        return "activity/detail";
+
+            return "search/detail";
+
     }
+
+
 }

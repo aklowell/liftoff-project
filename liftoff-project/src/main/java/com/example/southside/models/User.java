@@ -37,6 +37,8 @@ public class User {
 
     private String role;
 
+    private String language;
+
     public User() {
     }
 
@@ -97,6 +99,14 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }
 

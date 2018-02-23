@@ -106,10 +106,10 @@
         </div>  -->
 
         <input type="submit" value="Search" />
+        <input type="reset" value="Clear Search" />
     </form>
 
-    <hr />
-
+<!--
     <div>
         <div th:unless="${activities} and ${activities.size()}">
             <h2>No Results</h2>
@@ -118,7 +118,7 @@
 
         <div th:if="${activities} and ${activities.size()}">
 
-            <!--     <h3 th:text="${activity.eSubject} + ${activities.size() + ' Result(s)'}"></h3> -->
+               <h3 th:text="${activity.eSubject} + ${activities.size() + ' Result(s)'}"></h3>
 
 
 
@@ -148,5 +148,7 @@
 
 </div>
 
+-->
+</div>
 </body>
 </html>

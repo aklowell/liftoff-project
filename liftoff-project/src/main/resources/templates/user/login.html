@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-<div th:replace="fragments :: page-header"></div>
+
 <h1 th:text="${title}">Default Title</h1>
 
 
-<form method ="post" th:object="${loginForm}" style="max-width:600px;">
+<form method ="post" th:object="${user}" action="/user/home" style="max-width:600px;">
     <div class="form-group">
         <label th:for="username">Username</label>
         <input class="form-control" name="username" />
@@ -22,17 +22,17 @@
         <input class="form-control"  type="password"  name="verify" />
         <p th:text="${error}" class="error"></p>
     </div>
+        <h3>Language / Idioma</h3>
     <div class="form-group">
        <span>
-          <input type="radio" th:field="*{language}" th:value="EN" th:checked="${subject}" />
+          <input type="radio" name="language" th:value="EN" />
             <label>English</label>
         </span>
-        <span>    <input type="radio"  th:field="*{language}" th:value="ES" th:checked="${subject}"/>
+        <span>    <input type="radio"  name="language" th:value="ES" />
             <label>Espanol</label>
         </span>
 
     </div>
-
 
 
 <input type = "submit" value="Login" />

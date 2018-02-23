@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<div th:replace="fragments :: page-header_es"></div>
+<h1 th:text="${title}">Default Title</h1>
+
+
+
+<h2>Detalles: <span th:text= "${name}"  ></span> (id = <span th:text="${id}">id</span>)</h2>
+
+
+<table th:object = "${activity}">
+
+
+    <tr>
+        <th>Descripcion</th>
+        <th>Material necesarios</th>
+
+    </tr>
+
+    <tr>
+        <td th:text="*{sDescription}"></td>
+        <td th:text="*{sMaterials}"></td>
+    </tr>
+
+</table>
+
+<!--put an image here -->
+
+<!-- buttons for We did it, save to my list  -->
+
+
+
+<div class="btn-group">
+    <button><a href="#">Lo hicimos!</a></button>
+    <button><a href="#">Guardar</a></button>
+
+</div>
+
+</body>
+</html>

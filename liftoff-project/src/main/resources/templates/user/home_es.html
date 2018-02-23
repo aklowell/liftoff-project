@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<div th:replace="fragments :: page-header_es"></div>
+<h1 th:text="${title}">Default Title</h1>
+
+<h2>Bienvenidos <span th:text= "${user.username}"  th:value="${user.username}">User Name</span>!</h2>
+<h3>Yo quiero ...</h3>
+
+<ul>
+    <li><a href="/search">Search for an activity</a></li>
+    <li><a href="#">See my list - inactive link</a></li>
+    <li><a href="#">Teacher's Choice - inactive</a></li>
+    <li><a href="#">Email my child's teacher - inactive</a></li>
+</ul>
+
+</body>
+</html>

@@ -4,20 +4,21 @@ package com.example.southside.controllers;
 import com.example.southside.models.User;
 import com.example.southside.models.data.UserDao;
 
-import com.example.southside.models.forms.LoginForm;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping(value="user")
+@SessionAttributes("user")
 public class UserController {
 
     @Autowired
@@ -51,21 +52,36 @@ public class UserController {
 
     //TODO set this up to check for user in database and give access to correct locations
 
-    @RequestMapping(value="login", method=RequestMethod.GET)
+    @RequestMapping(value = "login", method=RequestMethod.GET)
+    public String login(Model model){
+
+        return "user/login";
+    }
+
+
+
+/*    @RequestMapping(value="login", method=RequestMethod.GET)
     public String login (Model model, LoginForm loginForm) {
         model.addAttribute(loginForm);
         return "user/login";
 
     }
+*/
 
-    @RequestMapping(value="login", method=RequestMethod.POST)
-    public String login(Model model, LoginForm loginForm, String language) {
-        model.addAttribute(loginForm);
-        if (language.equalsIgnoreCase("en")) {
-            return "user/test";
-        }
-
-        return "user/login";
+    @ModelAttribute("user")
+    public User getUser() {
+        return new User(); //or however you create a default
     }
+
+    @RequestMapping(value="home", method=RequestMethod.POST)
+    public String login(@ModelAttribute("user") User user) {
+           // model.addAttribute("user", user.getUsername());
+            if (user.getLanguage().equalsIgnoreCase("es")) {
+                return "user/home_es";
+            } else {
+                return "user/home_en";
+    }
+
+}
 
 }
