@@ -57,14 +57,26 @@ public class ActivityController {
     }
 
     @RequestMapping(value = "detail/{id}", method = RequestMethod.GET)
-    public String displayDetailsForm(@ModelAttribute("user") User user, @PathVariable int id, Model model) {
+    public String displayDetailsForm(@PathVariable int id, Model model) {
         Activity displayActivity = activityDao.findOne(id);
         model.addAttribute("name", displayActivity.geteName());
         model.addAttribute("activityId", activityDao.findOne(id));
         model.addAttribute(displayActivity);
 
 
-            return "search/detail";
+            return "activity/detail";
+
+    }
+
+    @RequestMapping(value = "detalles/{id}", method = RequestMethod.GET)
+    public String displayDetailsFormSpanish(@PathVariable int id, Model model) {
+        Activity displayActivity = activityDao.findOne(id);
+        model.addAttribute("name", displayActivity.geteName());
+        model.addAttribute("activityId", activityDao.findOne(id));
+        model.addAttribute(displayActivity);
+
+
+        return "activity/detalles";
 
     }
 

@@ -31,7 +31,7 @@
 
             <td th:text="${bysubject.sAges}"></td>
             <td th:text="${bysubject.sWhere}"></td>
-            <td><a th:href="@{'/search/detail/' +${bysubject.id}}">Ver detalles</a></td>
+            <td><a th:href="@{'/activity/detalles/' +${bysubject.id}}">Ver detalles</a></td>
         </tr>
 
     </table>
@@ -63,7 +63,7 @@
 
             <td th:text="${age.sAges}"></td>
             <td th:text="${age.sWhere}"></td>
-            <td><a th:href="@{'/seach/detail/' +${age.id}}">Ver detalles</a></td>
+            <td><a th:href="@{'/activity/detalles/' +${age.id}}">Ver detalles</a></td>
         </tr>
 
     </table>
@@ -95,7 +95,7 @@
 
             <td th:text="${where.sAges}"></td>
             <td th:text="${where.sWhere}"></td>
-            <td><a th:href="@{'/search/detail/' +${where.id}}">Ver detalles</a></td>
+            <td><a th:href="@{'/activity/detalles/' +${where.id}}">Ver detalles</a></td>
         </tr>
 
     </table>

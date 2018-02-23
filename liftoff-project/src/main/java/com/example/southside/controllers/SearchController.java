@@ -50,7 +50,8 @@ public class SearchController {
     @RequestMapping(value = "results")
     public String search(@ModelAttribute("user") User user, Model model, @ModelAttribute SearchForm searchForm) {
         // ArrayList<Activity> activities;
-//TODO Separate the "All" Case to a separate page or a menu tab
+
+
 
             model.addAttribute("bysubjects", activityDao.findByESubject(searchForm.getSubject()));
             model.addAttribute("ages", activityDao.findByEAges(searchForm.getAges()));
@@ -64,7 +65,20 @@ public class SearchController {
             return "search/results";
             }
             }
-//TODO CLEAR THE PREVIOUS SEARCH BEFORE THEY DO A NEW ONE
+
+    @RequestMapping(value="all")
+    public String all(@ModelAttribute("user")User user, Model model) {
+        model.addAttribute("activities", activityDao.findAll());
+        if (user.getLanguage().equalsIgnoreCase("es")) {
+
+            return "search/all_es";
+        }  else {
+            return "search/all";
+        }
+
+    }
+
+//TODO CLEAR THE PREVIOUS SEARCH BEFORE THEY DO A NEW ONE - it is partially working
 }
   //      return "search/index";
   //  }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<div th:replace="fragments :: page-header"></div>
+
+
+
+<div th:unless="${activities} and ${activities.size()}">
+    <h2>No Results</h2>
+</div>
+
+
+<div th:if="${activities} and ${activities.size()}">
+    <h2>All Activities</h2>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Subject</th>
+
+            <th>Ages</th>
+            <th>When or Where</th>
+            <th>See details</th>
+        </tr>
+        <tr th:each="activity : ${activities}">
+            <td th:text="${activity.eName}"></td>
+            <td th:text="${activity.eSubject}"></td>
+
+
+            <td th:text="${activity.eAges}"></td>
+            <td th:text="${activity.eWhere}"></td>
+            <td><a th:href="@{'/activity/detail/' +${activity.id}}">See details</a></td>
+        </tr>
+
+    </table>
+
+
+</div>
+
+</body>
+</html>
