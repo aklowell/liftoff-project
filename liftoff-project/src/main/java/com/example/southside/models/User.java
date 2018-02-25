@@ -6,8 +6,10 @@ import org.hibernate.validator.constraints.Email;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 //TODO incorporate security: hashing, roles (TBD)
 //TODO http://websystique.com/spring-security/spring-security-4-password-encoder-bcrypt-example-with-hibernate/ complicated
@@ -41,6 +43,11 @@ public class User {
 
     public User() {
     }
+
+    @ManyToMany
+    private List<Time> times;
+
+    public void addTime(Time item) { times.add(item); }
 
     public User(String username, String email, String password) {
         this.username = username;

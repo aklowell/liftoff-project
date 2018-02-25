@@ -18,12 +18,13 @@
 <div th:fragment="page-header">
     <ul class="topnav">
         <!-- TODO add hrefs to the list below. -->
-        <li><a th:href = "@{/user}">Home</a></li>
+        <li><a th:href = "@{/user/home}">Home</a></li>
+        <li><a th:href="@{/search/all}">See All Activities</a></li>
         <li><a th:href = "@{/search}">Search Activities</a></li>
         <li><a th:href="@{/}">My List</a></li>
         <li><a th:href="@{/}">Send a Note</a></li>
         <li><a th:href="@{/}">Log Out</a></li>
-        <li><a th:href="@{/}">Back</a></li>
+  <!--      <li><a th:href="@{/}">Back</a></li> -->
 
     </ul>
 </div>
@@ -32,11 +33,12 @@
     <ul class="topnav">
         <!-- TODO add hrefs to the list below. -->
         <li><a th:href = "@{/home}">Inicio</a></li>
+        <li><a th:href="@{/search/all}">Ver Todos Actividades</a></li>
         <li><a th:href = "@{/search}">Buscar</a></li>
         <li><a th:href="@{/}">Mi lista</a></li>
         <li><a th:href="@{/}">Enviar el maestro/a</a></li>
         <li><a th:href="@{/}">Salir</a></li>
-        <li><a th:href="@{/}">De vuelta</a></li>
+    <!--    <li><a th:href="@{/}">De vuelta</a></li>  -->
 
     </ul>
 </div>

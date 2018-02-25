@@ -1,14 +1,11 @@
 package com.example.bookgroup.models;
 
 
-import java.math.BigDecimal;
-import java.sql.ResultSet;
-import java.util.*;
-import java.util.function.ToIntFunction;
-import java.util.stream.Collectors;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
+import java.util.List;
 
 
 
@@ -113,7 +110,7 @@ public double getRate() {
 
 
     @ManyToOne
-    private Members members;
+    private Member members;
 
 
 
@@ -203,11 +200,11 @@ public double getRate() {
 
 
 
-    public Members getMembers() {
+    public Member getMembers() {
         return members;
     }
 
-    public void setMembers(Members members) {
+    public void setMembers(Member members) {
         this.members = members;
     }
 

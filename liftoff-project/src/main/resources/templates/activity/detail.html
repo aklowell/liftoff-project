@@ -32,11 +32,20 @@
 
 
 
-<div class="btn-group">
-    <button><a href="#">We did it!</a></button>
-    <button><a href="#">Save for later</a></button>
+<!--TODO make this a button? -->
+    <p><a th:href="@{'/activity/completed/' +${activity.id}}">We did it!</a></p>
 
-</div>
+
+
+
+
+<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 
 </body>
 </html>

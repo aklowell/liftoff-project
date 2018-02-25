@@ -2,10 +2,9 @@ package com.example.bookgroup.controllers;
 
 import com.example.bookgroup.models.Book;
 import com.example.bookgroup.models.BookGenre;
-import com.example.bookgroup.models.Members;
-import com.example.bookgroup.models.Rating;
+import com.example.bookgroup.models.Member;
 import com.example.bookgroup.models.data.BookDao;
-import com.example.bookgroup.models.data.MembersDao;
+import com.example.bookgroup.models.data.MemberDao;
 import com.example.bookgroup.models.data.RatingDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -29,7 +26,7 @@ public class BookController {
     private BookDao bookDao;
 
     @Autowired
-    private MembersDao membersDao;
+    private MemberDao memberDao;
 
     @Autowired
     private RatingDao ratingDao;
@@ -50,7 +47,7 @@ public class BookController {
         model.addAttribute("title", "Add Book");
         model.addAttribute(new Book());
         model.addAttribute("bookGenres", BookGenre.values());
-        model.addAttribute("memberss", membersDao.findAll());
+        model.addAttribute("memberss", memberDao.findAll());
         return "book/add";
     }
 
@@ -59,11 +56,11 @@ public class BookController {
     public String processBookAddForm(@ModelAttribute @Valid Book newBook, Errors errors, @RequestParam int membersId, Model model) {
         if (newBook.getTitle().isEmpty()) {
             model.addAttribute("title", "Add Book");
-            model.addAttribute("members", membersDao.findAll());
+            model.addAttribute("members", memberDao.findAll());
             return "book/add";
         }
 
-        Members mem = membersDao.findOne(membersId);
+        Member mem = memberDao.findOne(membersId);
         newBook.setMembers(mem);
         bookDao.save(newBook);
 

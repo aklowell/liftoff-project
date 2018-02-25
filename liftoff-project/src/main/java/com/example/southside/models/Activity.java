@@ -14,6 +14,11 @@ public class Activity {
     @GeneratedValue
     private int id;
 
+    @ManyToMany
+    private List<Time> times;
+
+    public void addTime(Time item) { times.add(item); }
+
     private String eName;
 
     private String sName;
@@ -56,12 +61,14 @@ public class Activity {
 
     private String sRelevance;
 
+
     public Activity() {}
 
     public Activity(String eName, String sName) {
         this.eName = eName;
         this.sName = sName;
     }
+
 
     public String geteName() {
         return eName;
@@ -215,6 +222,7 @@ public class Activity {
     public void setsRelevance(String sRelevance) {
         this.sRelevance = sRelevance;
     }
+
 
     public static Activity instance;
 

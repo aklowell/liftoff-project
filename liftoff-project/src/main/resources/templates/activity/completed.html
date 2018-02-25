@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<div th:replace="fragments :: page-header"></div>
+<h1 th:text="${title}">Default Title</h1>
+
+
+<p th:text="${name}"></p>
+<h2>You did it! Your child is one step closer to mastering [insert skill] </h2>
+<h3>Please tell us three things about this activity. For example:</h3>
+<ul>
+    <li>What did your child learn?</li>
+    <li>What did you or your child like about this activity?</li>
+    <li>Do you think you will do this one again?</li>
+    <li>What did you notice that your child had difficulty with?</li>
+</ul>
+
+
+<form method ="post"  th:object="${activity}" style="max-width:600px;">
+
+    <div class="form-group">
+        <label th:for="minutes">Time spent (in minutes)</label>
+        <input class="form-control" name="minutes" th:value="${minutes}"  />
+  <!--     <input type="hidden" th:value="${time.id}" name="timeId" />   -->
+
+    </div>
+    <input type="hidden" th:value="${id}" name="id" />
+    <input type = "submit" value="Send to SouthSide" />
+</form>
+
+</body>
+</html>

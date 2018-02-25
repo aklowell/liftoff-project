@@ -3,9 +3,12 @@ package com.example.southside.controllers;
 
 import com.example.southside.models.Activity;
 import com.example.southside.models.Skill;
+import com.example.southside.models.Time;
 import com.example.southside.models.User;
 import com.example.southside.models.data.ActivityDao;
 import com.example.southside.models.data.SkillDao;
+import com.example.southside.models.data.TimeDao;
+import com.example.southside.models.data.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +27,12 @@ public class ActivityController {
 
     @Autowired
     private SkillDao skillDao;
+
+    @Autowired
+    private TimeDao timeDao;
+
+    @Autowired
+    private UserDao userDao;
 
     //Request path: /index - for teachers & admins only
     //from here they add, edit and delete
@@ -60,7 +69,7 @@ public class ActivityController {
     public String displayDetailsForm(@PathVariable int id, Model model) {
         Activity displayActivity = activityDao.findOne(id);
         model.addAttribute("name", displayActivity.geteName());
-        model.addAttribute("activityId", activityDao.findOne(id));
+     //   model.addAttribute("activityId", activityDao.findOne(id));
         model.addAttribute(displayActivity);
 
 
@@ -72,7 +81,7 @@ public class ActivityController {
     public String displayDetailsFormSpanish(@PathVariable int id, Model model) {
         Activity displayActivity = activityDao.findOne(id);
         model.addAttribute("name", displayActivity.geteName());
-        model.addAttribute("activityId", activityDao.findOne(id));
+        //model.addAttribute("activityId", activityDao.findOne(id));
         model.addAttribute(displayActivity);
 
 
@@ -81,4 +90,32 @@ public class ActivityController {
     }
 
 
-}
+
+    @RequestMapping(value="completed/{id}", method=RequestMethod.GET)
+    public String displayCompletedForm(@PathVariable int id, Model model) {
+        Activity completeActivity = activityDao.findOne(id);
+
+        model.addAttribute("name", completeActivity.geteName());
+
+        return "activity/completed";
+    }
+
+    @RequestMapping(value="completed/{id}", method=RequestMethod.POST)
+    public String processCompletedForm(@PathVariable int id, Model model, int minutes) {
+        Activity updateActivity=activityDao.findOne(id);
+
+/* TODO save the time to the user also- need to do full login process first */
+
+        Time newtime = new Time();
+        newtime.setMinutes(minutes);
+        timeDao.save(newtime);
+
+        updateActivity.addTime(newtime);
+        activityDao.save(updateActivity);
+
+
+        return "redirect:/search";
+        }
+    }
+
+
