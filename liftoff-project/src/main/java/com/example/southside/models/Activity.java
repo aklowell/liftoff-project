@@ -4,6 +4,7 @@ package com.example.southside.models;
 import javafx.scene.control.DatePicker;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,10 +15,10 @@ public class Activity {
     @GeneratedValue
     private int id;
 
-    @ManyToMany
-    private List<Time> times;
+    @OneToMany
+    @JoinColumn(name="activity_id")
+    private List<Completed> completed = new ArrayList<>();
 
-    public void addTime(Time item) { times.add(item); }
 
     private String eName;
 

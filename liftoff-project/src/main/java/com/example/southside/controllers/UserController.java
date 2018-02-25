@@ -76,6 +76,7 @@ public class UserController {
     @RequestMapping(value="home", method=RequestMethod.POST)
     public String login(@ModelAttribute("user") User user) {
            // model.addAttribute("user", user.getUsername());
+
             if (user.getLanguage().equalsIgnoreCase("es")) {
                 return "user/home_es";
             } else {

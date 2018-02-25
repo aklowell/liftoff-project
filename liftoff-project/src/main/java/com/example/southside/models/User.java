@@ -3,12 +3,10 @@ package com.example.southside.models;
 
 import org.hibernate.validator.constraints.Email;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 //TODO incorporate security: hashing, roles (TBD)
@@ -41,13 +39,13 @@ public class User {
 
     private String language;
 
+    @OneToMany
+    @JoinColumn(name="user_id")
+    private List<Completed> completed = new ArrayList<>();
+
     public User() {
     }
 
-    @ManyToMany
-    private List<Time> times;
-
-    public void addTime(Time item) { times.add(item); }
 
     public User(String username, String email, String password) {
         this.username = username;

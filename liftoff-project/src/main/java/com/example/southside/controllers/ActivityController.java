@@ -1,14 +1,8 @@
 package com.example.southside.controllers;
 
 
-import com.example.southside.models.Activity;
-import com.example.southside.models.Skill;
-import com.example.southside.models.Time;
-import com.example.southside.models.User;
-import com.example.southside.models.data.ActivityDao;
-import com.example.southside.models.data.SkillDao;
-import com.example.southside.models.data.TimeDao;
-import com.example.southside.models.data.UserDao;
+import com.example.southside.models.*;
+import com.example.southside.models.data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 
 @Controller
 @RequestMapping("activity")
@@ -29,7 +24,7 @@ public class ActivityController {
     private SkillDao skillDao;
 
     @Autowired
-    private TimeDao timeDao;
+    private CompletedDao completedDao;
 
     @Autowired
     private UserDao userDao;
@@ -101,17 +96,19 @@ public class ActivityController {
     }
 
     @RequestMapping(value="completed/{id}", method=RequestMethod.POST)
-    public String processCompletedForm(@PathVariable int id, Model model, int minutes) {
-        Activity updateActivity=activityDao.findOne(id);
+    public String processCompletedForm(@PathVariable int id, Model model, int minutes, String comments, Date dateCompleted) {
+        Activity completedActivity=activityDao.findOne(id);
 
 /* TODO save the time to the user also- need to do full login process first */
+/* TODO get the date to populate in the database!! */
+        Completed newCompleted = new Completed();
+        newCompleted.setMinutes(minutes);
+        newCompleted.setComments(comments);
+        newCompleted.setDateCompleted(dateCompleted);
 
-        Time newtime = new Time();
-        newtime.setMinutes(minutes);
-        timeDao.save(newtime);
+        newCompleted.setActivity(completedActivity);
 
-        updateActivity.addTime(newtime);
-        activityDao.save(updateActivity);
+        completedDao.save(newCompleted);
 
 
         return "redirect:/search";
