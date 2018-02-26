@@ -243,7 +243,7 @@ ul.column {
   flex-direction: column;
   flex-wrap: wrap;
   display: flex;
-  height: 200px;
+  height: 100px;
 }
 ul.column li {
   flex: 1 0 25%;

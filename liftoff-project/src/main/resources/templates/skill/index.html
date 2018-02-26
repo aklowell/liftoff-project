@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container">
-<div th:replace="fragments :: page-header"></div>
+<div th:replace="fragments :: page-header_staff"></div>
 <h1 th:text="${title}">Default Title</h1>
 
 <p th:unless="${skills} and ${skills.size()}">No skills added yet!</p>

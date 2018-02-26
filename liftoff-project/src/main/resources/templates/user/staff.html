@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+<!-- <div th:replace="fragments :: page-header_staff"></div> -->
+<h1 th:text="${title}">Default Title</h1>
+
+
+<h2>Welcome <span th:text= "${user.username}"  th:value="${user.username}">User Name</span>!</h2>
+
+<h3>I want to ...</h3>
+<ul>
+    <li><a href="/activity">View All/Edit an Activity</a></li>
+    <li><a href="/activity/add">Add an Activity</a></li>
+    <li><a href="/skill/add">Add a Skill</a></li>
+    <li><a href="#">Run Reports</a></li>
+    <li><a href="/logout">Log Out</a></li>
+</ul>
+</body>
+</html>

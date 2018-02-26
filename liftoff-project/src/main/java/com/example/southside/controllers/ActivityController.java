@@ -31,6 +31,10 @@ public class ActivityController {
 
     //Request path: /index - for teachers & admins only
     //from here they add, edit and delete
+
+    //TODO ADD EDIT FUNCTION
+
+
     @RequestMapping(value = "")
     public String index(Model model) {
         model.addAttribute("activities", activityDao.findAll());
@@ -46,6 +50,8 @@ public class ActivityController {
         return "activity/add";
     }
 
+    //TODO Add a way to check if activity has already been entered, confirm user wants to enter it again.
+
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddActivityForm(@ModelAttribute @Valid Activity newActivity, Errors errors, Model model) {
         if (errors.hasErrors()) {
@@ -54,7 +60,6 @@ public class ActivityController {
             return "activity/add";
         }
 
-        //TODO Add a way to check if activity has already been entered, confirm user wants to enter it again.
         activityDao.save(newActivity);
 
         return "redirect:/activity";

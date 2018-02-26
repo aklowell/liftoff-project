@@ -70,19 +70,40 @@ public class UserController {
 
     @ModelAttribute("user")
     public User getUser() {
-        return new User(); //or however you create a default
+        return new User();
     }
+
+
 
     @RequestMapping(value="home", method=RequestMethod.POST)
-    public String login(@ModelAttribute("user") User user) {
+    public String login(@ModelAttribute("user") User user, Model model) {
            // model.addAttribute("user", user.getUsername());
+            if (user.getRole().equalsIgnoreCase("staff")) {
+                return "user/staff";
+            }
+                if (user.getRole().equalsIgnoreCase("family")
+                    && (user.getLanguage().equalsIgnoreCase("es"))) {
+                    return "user/home_es";
+                }
 
-            if (user.getLanguage().equalsIgnoreCase("es")) {
-                return "user/home_es";
-            } else {
-                return "user/home_en";
+                if (user.getRole().equalsIgnoreCase("family")
+                        && (user.getLanguage().equalsIgnoreCase("en"))) {
+                    return "user/home_en";
+        }
+             else model.addAttribute("error", "No such user exists - see SouthSide to register.");
+                return "user/login";
     }
-}
+
+    /*@Controller
+    public class LogoutController {   */
+
+    @RequestMapping(value="/logout",method = RequestMethod.GET)
+    public String logout(HttpServletRequest request){
+        HttpSession httpSession = request.getSession();
+        httpSession.invalidate();
+        return "user/logout";
+        }
+
+    }
 
 
-}

@@ -7,7 +7,8 @@
 
 
 <p th:text="${name}"></p>
-<h2>You did it! Your child is one step closer to mastering [insert skill] </h2>
+
+<h2>You did it! Your child is one step closer to mastering skills for success in school and in life!</h2>
 <h3>Please tell us three things about this activity. For example:</h3>
 <ul>
     <li>What did your child learn?</li>
@@ -22,8 +23,8 @@
     <div class="form-group">
         <label th:for="minutes">Time spent (in minutes)</label>
         <input class="form-control" name="minutes" th:value="${minutes}"  />
-        <label th:for="comments">Three comments</label>
-        <textarea name="comments" rows="5" th:value="${comments}" />
+     <div>   <label th:for="comments">Three comments</label>
+        <textarea name="comments" rows="5" th:value="${comments}" /></div>
         <label th:for="date">Date Completed</label>
         <input type="text" class="form-control" placeholder="mm/dd/yyyy" name="date" th:value="${dateCompleted}"  />
   <!--     <input type="hidden" th:value="${time.id}" name="timeId" />
